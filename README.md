@@ -46,6 +46,6 @@
    python manage.py migrate
    ```
 6. Start the server:
-   ```bash
+ ```bash
    python manage.py runserver
    ```
