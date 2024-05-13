@@ -1,0 +1,105 @@
+.nav-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: indigo;
+  cursor: pointer;
+}
+
+.page-item {
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+  background: #fff;
+  color: #101115;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 7px;
+}
+
+.github {
+  height: 36px;
+  width: 36px;
+  line-height: 36px;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f9d58;
+  color: #fff;
+}
+
+.nav-cart-count {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -35px;
+  margin-left: 20px;
+  border-radius: 11px;
+  font-size: 14px;
+  background-color: red;
+  color: white;
+}
+.avatar-user-login {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.avatar-user-login .avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dropdownProfile {
+  position: absolute;
+  top: 4.5rem;
+  right: -1rem;
+  width: 250px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  border: 1px solid gray;
+  font-weight: 700;
+  text-align: center;
+}
+.dropdownProfile ul {
+  padding: 0;
+}
+.dropdownProfile::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem;
+  right: 1.6rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 0.2px solid gray;
+  border-top: 1px solid gray;
+}
+.dropdown-item {
+  padding: 0;
+  list-style-type: none;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.dropdownProfile ul li:nth-child(3) {
+  padding-top: 5px;
+  border-top: 1px solid gray;
+}
+
+.dropdownProfile ul li:hover {
+  background-color: rgb(153, 149, 149);
+  cursor: pointer;
+}
