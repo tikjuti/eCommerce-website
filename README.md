@@ -12,37 +12,37 @@
 ### Start client
 
 1. Change into the client directory: 
-   ```bash
-     cd client
-     ```
+ ```bash
+   cd client
+   ```
 2. Install npm dependencies:
-   ```bash
-     npm install
-     ```
+ ```bash
+   npm install
+   ```
 3. Install npm dependencies:
-   ```bash
-     npm run dev
-     ```
+ ```bash
+   npm run dev
+   ```
 ### Start server
 
 1. Change into the project directory:
-   ```bash
+ ```bash
    cd server
    ```
 2. Create the virtual environment:
-   ```bash
+ ```bash
    python3 -m venv env (for windows --> python -m venv env)
    ```
 3. Activate the virtual environment:
-   ```bash
+ ```bash
    source env/bin/activate (for windows --> env\scripts\activate)
    ```
 4. Install packages:
-   ```bash
+ ```bash
    pip install -r requirement.txt (same for both)
    ```
 5. Update the database:
-    ```bash
+ ```bash
    python manage.py migrate
    ```
 6. Start the server:
