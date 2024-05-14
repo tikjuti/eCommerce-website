@@ -3,7 +3,6 @@ from .views import (
     CategoryView, ProductView, CategoryCreateView, 
     ProductDetailView ,ProductCreateView
 )
-from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()

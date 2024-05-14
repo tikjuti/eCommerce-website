@@ -94,7 +94,7 @@
   width: 100%;
 }
 
-.dropdownProfile ul li:nth-child(3) {
+.dropdownProfile ul li:nth-child(2) {
   padding-top: 5px;
   border-top: 1px solid gray;
 }

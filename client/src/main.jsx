@@ -24,6 +24,7 @@ import AuthProvider from "./contexts/AuthProvider.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
+import Order from "./orderPage/Order.jsx";
 
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./utilis/store.js";
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
       },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      {
+        path: "/order",
+        element: (
+          <PrivateRoute>
+            <Order />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {

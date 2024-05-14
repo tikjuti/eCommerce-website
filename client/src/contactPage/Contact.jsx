@@ -1,5 +1,8 @@
 import GoogleMap from "../components/GoogleMap";
 import PageHeader from "../components/PageHeader";
+import { useSnackbar } from "notistack";
+import { useState, useEffect } from "react";
+import AxiosInstance from "../api/AxiosInstance";
 
 const subTitle = "Get in touch with us";
 const title = "We're Always Eager To Hear From You!";
@@ -36,6 +39,52 @@ const contactList = [
 ];
 
 const Contact = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  // const [inputName, setInputName] = useState("");
+  // const [inputEmail, setInputEmail] = useState("");
+  // const [inputNumber, setInputNumber] = useState("");
+  // const [inputSubject, setInputSubject] = useState("");
+  // const [inputMessage, setInputMessage] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleContact = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const number = form.number.value;
+    const subject = form.subject.value;
+    const email = form.email.value;
+    const message = form.message.value;
+
+    if (name === "") return setErrorMessage("Please provide your name");
+    if (number === "")
+      return setErrorMessage("Please provide your phone number");
+    if (subject === "") return setErrorMessage("Please provide your subject");
+    if (email === "") return setErrorMessage("Please provide your email");
+    if (message === "") return setErrorMessage("Please provide your message");
+
+    try {
+      const response = await AxiosInstance.post("contact/create/", {
+        name: name,
+        phone: number,
+        subject: subject,
+        email: email,
+        message: message,
+      });
+      if (response.status == 201) {
+        form.name.value = "";
+        form.number.value = "";
+        form.subject.value = "";
+        form.email.value = "";
+        form.message.value = "";
+        setErrorMessage("");
+        enqueueSnackbar("Send message successfully", { variant: "success" });
+      }
+    } catch (error) {
+      console.error("Error fetching contact:", error);
+    }
+  };
   return (
     <div>
       <PageHeader title="Get In Touch With Us" curPage={"Contact Us"} />
@@ -78,7 +127,7 @@ const Contact = () => {
             <h2 className="title">{conTitle}</h2>
           </div>
           <div className="section-wrapper">
-            <form action="" className="contact-form">
+            <form action="" className="contact-form" onSubmit={handleContact}>
               <div className="form-group">
                 <input
                   type="text"
@@ -118,6 +167,13 @@ const Contact = () => {
                   rows="8"
                   placeholder="Your Message"
                 ></textarea>
+              </div>
+              <div>
+                {errorMessage && (
+                  <div className="error-message text-danger mb-1">
+                    {errorMessage}
+                  </div>
+                )}
               </div>
               <div className="form-group w-100 text-center">
                 <button className="lab-btn">

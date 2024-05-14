@@ -37,30 +37,6 @@ const NavItems = () => {
     };
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   const updateCartCount = () => {
-  //     const cart = localStorage.getItem("cart");
-  //     if (cart) {
-  //       const parsedCart = JSON.parse(cart);
-  //       setCountCart(parsedCart.length);
-  //     }
-  //   };
-  //   updateCartCount();
-  //   window.addEventListener("storage", updateCartCount);
-
-  //   return () => {
-  //     window.removeEventListener("storage", updateCartCount);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   const cart = localStorage.getItem("cart");
-  //   if (cart) {
-  //     const parsedCart = JSON.parse(cart);
-  //     setCountCart(parsedCart.length);
-  //   }
-  // }, []);
-
   const { user } = useContext(AuthContext);
 
   window.addEventListener("scroll", () => {

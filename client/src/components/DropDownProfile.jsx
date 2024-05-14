@@ -14,10 +14,7 @@ const DropDownProfile = () => {
     <div className="flex flex-col dropdownProfile">
       <ul className="flex flex-col gap-4">
         <li className="dropdown-item">
-          <a href="#">Profile</a>
-        </li>
-        <li className="dropdown-item">
-          <a href="">Order</a>
+          <a href="/order">Order</a>
         </li>
         <li className="dropdown-item dropdown-item-active">
           <a href="" onClick={handleLogout}>
