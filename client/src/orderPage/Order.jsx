@@ -1,5 +1,27 @@
+import { useState, useEffect } from "react";
+import AxiosInstance from "../api/AxiosInstance";
 import PageHeader from "../components/PageHeader";
+import delImgUrl from "../assets/images/shop/del.png";
+import OrderDetail from "./OrderDetail";
+
 const Order = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+  const getOrders = async () => {
+    try {
+      const response = await AxiosInstance.get("order/");
+      if (response.status === 200) {
+        setOrders(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
   return (
     <div>
       <PageHeader title={"Order"} curPage={"Order Page"} />
@@ -11,63 +33,59 @@ const Order = () => {
               <table>
                 <thead>
                   <tr>
-                    <th className="cat-product">Product</th>
-                    <th className="cat-price">Price</th>
-                    <th className="cat-quantity">Quantity</th>
-                    <th className="cat-toprice">Total</th>
+                    <th className="cat-product">Total</th>
+                    <th className="cat-price">Country</th>
+                    <th className="cat-quantity">City</th>
+                    <th className="cat-toprice">Date</th>
                     <th className="cat-edit">Status</th>
+                    <th className="cat-edit">Action</th>
+                    <th className="cat-edit">Detail</th>
                   </tr>
                 </thead>
 
-                {/* <tbody>
-                  {cartItems.map((item, index) => (
+                <tbody>
+                  {orders.map((item, index) => (
                     <tr key={index}>
                       <td className="product-item cat-product">
-                        <div className="p-thumb">
-                          <Link to={`/shop/${item.id}`}>
-                            <img src={item.image} alt="" />
-                          </Link>
-                        </div>
+                        <div className="p-content">${item.total_price}</div>
+                      </td>
+                      <td className="cat-price">
+                        <div className="p-content">{item.country}</div>
+                      </td>
+
+                      <td className="cat-price">
+                        <div className="p-content">{item.city}</div>
+                      </td>
+                      <td className="cat-price">
                         <div className="p-content">
-                          <Link to={`/shop/${item.id}`}>{item.title}</Link>
+                          {item.order_date.split("T")[0]}
                         </div>
                       </td>
-
-                      <td className="cat-price">${item.price}</td>
-                      <td className="cat-quantity">
-                        <div className="cart-plus-minus">
-                          <div
-                            className="dec qtybutton"
-                            onClick={() => handleDescrease(item)}
-                          >
-                            -
-                          </div>
-                          <input
-                            type="text"
-                            className="cart-plus-minus-box"
-                            name="qtybutton"
-                            value={item.quantity}
-                          />
-                          <div
-                            className="inc qtybutton"
-                            onClick={() => handleIncrease(item)}
-                          >
-                            +
-                          </div>
-                        </div>
-                      </td>
-
                       <td className="cat-toprice">
-                        ${caculateTotalPrice(item)}
+                        {item.order_status == false ? "Pending" : "Completed"}
                       </td>
-                      <td className="cat-edit">
-                        <a href="" onClick={() => handleRemoveItems(item)}>
-                          <img src={delImgUrl} alt="" />
-                        </a>
+                      {item.order_status != false ? (
+                        <td className="cat-edit">
+                          <span>No action</span>
+                        </td>
+                      ) : (
+                        <td className="cat-edit">
+                          <a href="">
+                            <img src={delImgUrl} alt="" />
+                          </a>
+                        </td>
+                      )}
+                      <td className="cat-price">
+                        <div className="p-content">
+                          <a
+                            href={`/order/${item.id}`}
+                            className="icofont-rounded-down"
+                          ></a>
+                        </div>
                       </td>
                     </tr>
                   ))}
-                </tbody> */}
+                </tbody>
               </table>
             </div>
           </div>

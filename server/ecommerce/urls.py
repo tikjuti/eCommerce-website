@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/v1/auth/', include('authentication.urls')),
     path('api/v1/product/', include('products.urls')),
     path('api/v1/contact/', include('contact.urls')),
+    path('api/v1/order/', include('order.urls')),
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

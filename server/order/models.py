@@ -4,11 +4,6 @@ from products.models import Product
 
 # Create your models here.
 
-class BillingAddress(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-
 class Order(models.Model):
     total_price = models.FloatField()
     order_status = models.BooleanField(default=False)
@@ -18,7 +13,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 class OrderDetail(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_details')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     product_price = models.FloatField()
     product_quantity = models.IntegerField()

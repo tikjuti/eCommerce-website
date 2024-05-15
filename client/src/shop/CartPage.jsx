@@ -56,6 +56,21 @@ const CartPage = () => {
 
   const orderTotal = cartSubTotal;
 
+  const getCountry = () => {
+    return document.getElementById("country").value;
+  };
+  const getCity = () => {
+    return document.getElementById("city").value;
+  };
+
+  const [country, setCountry] = useState("United Kingdom (UK)");
+  const [city, setCity] = useState("New York");
+
+  const address = {
+    country: country,
+    city: city,
+  };
+
   return (
     <div>
       <PageHeader title={"Shop Cart"} curPage={"Cart Page"} />
@@ -141,9 +156,8 @@ const CartPage = () => {
                 </form>
 
                 <form action="" className="cart-checkout">
-                  <input type="submit" value="Update Cart" />
                   <div>
-                    <CheckoutPage />
+                    <CheckoutPage address={address} total={orderTotal} />
                   </div>
                 </form>
               </div>
@@ -152,14 +166,20 @@ const CartPage = () => {
                 <div className="row">
                   <div className="col-md-6 col-12">
                     <div className="calculate-shiping">
-                      <h3>Calculate Shipping</h3>
+                      <h3>Address Shipping</h3>
                       <div className="outline-select">
-                        <select>
-                          <option value="uk">United Kingdom (UK)</option>
-                          <option value="bd">Bangladesh </option>
-                          <option value="pak">Pakisthan</option>
-                          <option value="ind">India</option>
-                          <option value="np">Nepal</option>
+                        <select
+                          id="country"
+                          name="country"
+                          onChange={() => setCountry(getCountry())}
+                        >
+                          <option value="United Kingdom (UK)">
+                            United Kingdom (UK)
+                          </option>
+                          <option value="Bangladesh">Bangladesh </option>
+                          <option value="Pakisthan">Pakisthan</option>
+                          <option value="India">India</option>
+                          <option value="Nepal">Nepal</option>
                         </select>
                         <span className="select-icon">
                           <i className="icofont-rounded-down"></i>
@@ -167,25 +187,21 @@ const CartPage = () => {
                       </div>
 
                       <div className="outline-select shipping-select">
-                        <select>
-                          <option value="uk">New York</option>
-                          <option value="bd">London</option>
-                          <option value="pak">Dhaka</option>
-                          <option value="ind">Korachi</option>
-                          <option value="np">New Dilh</option>
+                        <select
+                          id="city"
+                          name="city"
+                          onChange={() => setCity(getCity())}
+                        >
+                          <option value="New York">New York</option>
+                          <option value="London">London</option>
+                          <option value="Dhaka">Dhaka</option>
+                          <option value="Korachi">Korachi</option>
+                          <option value="New Dilh">New Dilh</option>
                         </select>
                         <span className="select-icon">
                           <i className="icofont-rounded-down"></i>
                         </span>
                       </div>
-                      <input
-                        type="text"
-                        name="postalCode"
-                        id="postalCode"
-                        className="cart-page-input-text"
-                        placeholder="Posttocode/Zip *"
-                      />
-                      <button type="submit">Update Address</button>
                     </div>
                   </div>
                   <div className="col-md-6 col-12">

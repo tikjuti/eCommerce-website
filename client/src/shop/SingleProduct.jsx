@@ -85,7 +85,6 @@ const SingleProduct = () => {
                 </div>
               </article>
             </div>
-
             <div className="col-lg-4 col-12">
               <aside className="ps-lg-4">
                 <PopularPost />

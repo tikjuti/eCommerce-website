@@ -3,8 +3,9 @@ import { Button, Modal } from "react-bootstrap";
 import "../components/model.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import AxiosInstance from "../api/AxiosInstance";
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ address, total }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [show, setShow] = useState(false);
   const [activeTab, setActiveTab] = useState("visa");
@@ -26,10 +27,29 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
-  const handleOrderConfirm = () => {
-    enqueueSnackbar("Order successfully placed!", { variant: "success" });
-    localStorage.removeItem("cart");
-    navigate(from, { replace: true });
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const orderDetails = cart.map((item) => ({
+    product: item.id,
+    product_price: item.price,
+    product_quantity: item.quantity,
+  }));
+
+  const handleOrderConfirm = async () => {
+    try {
+      const response = await AxiosInstance.post("order/create/", {
+        total_price: total,
+        country: address.country,
+        city: address.city,
+        order_details: orderDetails,
+      });
+      if (response.status == 201) {
+        enqueueSnackbar("Order successfully placed!", { variant: "success" });
+        localStorage.removeItem("cart");
+        navigate(from, { replace: true });
+      }
+    } catch (error) {
+      console.error("Error fetching contact:", error);
+    }
   };
 
   return (

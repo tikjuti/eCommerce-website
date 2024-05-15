@@ -25,6 +25,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import Order from "./orderPage/Order.jsx";
+import OrderDetail from "./orderPage/OrderDetail.jsx";
 
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./utilis/store.js";
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/order/:id",
+        element: (
+          <PrivateRoute>
+            <OrderDetail />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
@@ -68,15 +77,13 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <ReduxProvider store={store}>
-        <SnackbarProvider
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        >
-          <RouterProvider router={router}></RouterProvider>
-        </SnackbarProvider>
-      </ReduxProvider>
-    </AuthProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AuthProvider>
+    <ReduxProvider store={store}>
+      <SnackbarProvider anchorOrigin={{ vertical: "top", horizontal: "right" }}>
+        <RouterProvider router={router}></RouterProvider>
+      </SnackbarProvider>
+    </ReduxProvider>
+  </AuthProvider>
+  // </React.StrictMode>
 );
