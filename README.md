@@ -98,6 +98,10 @@
 
 <img src="./client/public/detailorder.png" style="zoom:60%" alt="game"/>
 
+### 11. Payment
+
+<img src="./client/public/payment.png" style="zoom:60%" alt="game"/>
+
 
 
 
