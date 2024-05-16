@@ -49,3 +49,8 @@
  ```bash
    python manage.py runserver
    ```
+## Overview
+#### Home page
+
+<img src="./client/public/home.png" style="zoom:60%" alt="game"/>
+<h3 align="center">home page</h3>
