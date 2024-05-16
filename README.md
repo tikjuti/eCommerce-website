@@ -50,7 +50,27 @@
    python manage.py runserver
    ```
 ## Overview
-#### Home page
+#### 1. Home page
 
 <img src="./client/public/home.png" style="zoom:60%" alt="game"/>
-<h3 align="center">home page</h3>
+<h3 align="center">h1. Home Page</h3>
+
+#### 2. Register
+
+<img src="./client/public/register.png" style="zoom:60%" alt="game"/>
+<h3 align="center">h2. Register</h3>
+
+#### 3. Login
+
+<img src="./client/public/login.png" style="zoom:60%" alt="game"/>
+<h3 align="center">h3. Login</h3>
+
+#### 4. Shop Page
+
+<img src="./client/public/shop.png" style="zoom:60%" alt="game"/>
+<h3 align="center">h4. Shop Page</h3>
+
+#### 5. Detail Product
+
+<img src="./client/public/detailproduct.png" style="zoom:60%" alt="game"/>
+<h3 align="center">h5. Detail Product</h3>
